@@ -1,12 +1,22 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { navlinks } from "../constants/navlink";
 import { FaTimes, FaBars } from "react-icons/fa";
 
 const Navbar = () => {
-  const [title, setTitle] = useState("Contact");
-  const [activeLinkId, setActiveLinkId] = useState(1);
+  const [title, setTitle] = useState("");
+  const { pathname } = useLocation();
+  const [activeLinkId, setActiveLinkId] = useState(0);
   const [showSideNav, setShowSideNav] = useState(false);
+
+  useEffect(() => {
+    navlinks.forEach(({ path, name, id }) => {
+      if (path === pathname) {
+        setTitle(name);
+        setActiveLinkId(id);
+      }
+    });
+  }, []);
 
   return (
     <nav className="relative w-full">
@@ -43,7 +53,9 @@ const Navbar = () => {
                 setTitle(name);
                 setActiveLinkId(id);
               }}
-              className={`${activeLinkId === id && "border-b"} py-2`}
+              className={`${
+                activeLinkId === id && "border-b"
+              } py-2 text-center`}
             >
               {name}
             </Link>
