@@ -2,11 +2,11 @@ import produce from "immer";
 import * as actionTypes from "../actions/contactActions";
 import { ContactDetails } from "../../interfaces/contact";
 
-export interface State {
+export interface ContactState {
   contacts: ContactDetails[];
 }
 
-const initialState: State = {
+const initialState: ContactState = {
   contacts: [],
 };
 

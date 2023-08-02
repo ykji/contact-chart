@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     navlinks.forEach(({ path, name, id }) => {
-      if (path === pathname) {
+      if (pathname.includes(path)) {
         setTitle(name);
         setActiveLinkId(id);
       }

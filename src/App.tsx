@@ -4,6 +4,8 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ContactDetails from "./pages/ContactDetails";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Contact />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/contact/:id" element={<ContactDetails />} />
             <Route path="/charts" element={<Charts />} />
           </Routes>
         </BrowserRouter>

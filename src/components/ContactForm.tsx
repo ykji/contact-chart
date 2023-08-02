@@ -2,20 +2,23 @@ import { ContactDetails } from "../interfaces/contact";
 import { ChangeEvent, FormEvent } from "react";
 
 interface Props {
+  title: string;
+  submitButtonText: string;
   formData: Omit<ContactDetails, "id">;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ContactForm = (props: Props) => {
-  const { formData, handleChange, handleSubmit } = props;
+  const { title, submitButtonText, formData, handleChange, handleSubmit } =
+    props;
 
   return (
     <form
       className="flex flex-col mt-8 gap-4 items-end"
       onSubmit={handleSubmit}
     >
-      <p className="self-center text-center font-bold">Please fill out the details.</p>
+      <p className="self-center text-center font-bold">{title}</p>
       <div className="flex gap-4 items-center mt-2">
         <label htmlFor="name">Name:</label>
         <input
@@ -115,10 +118,10 @@ const ContactForm = (props: Props) => {
         </div>
       </div>
       <button
-        className="self-center px-4 py-2 border border-white rounded-md mt-4"
+        className="self-center px-4 py-2 bg-green-600 rounded-md mt-4"
         type="submit"
       >
-        Submit
+        {submitButtonText}
       </button>
     </form>
   );
