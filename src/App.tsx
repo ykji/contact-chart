@@ -1,11 +1,14 @@
+import Home from "./pages/Home";
 import store from "./redux/store";
 import Charts from "./pages/Charts";
 import Contact from "./pages/Contact";
-import Navbar from "./components/Navbar";
 import { Provider } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Worldwide from "./pages/covid-19/Worldwide";
 import ContactDetails from "./pages/ContactDetails";
-import Home from "./pages/Home";
+import Historical from "./pages/covid-19/Historical";
+import CountryWise from "./pages/covid-19/CountryWise";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -17,7 +20,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/contact/:id" element={<ContactDetails />} />
-            <Route path="/charts" element={<Charts />} />
+            <Route path="/charts" element={<Charts />}>
+              <Route index element={<Worldwide />} />
+              <Route path="worldwide" element={<Worldwide />} />
+              <Route path="country-wise" element={<CountryWise />} />
+              <Route path="historical" element={<Historical />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
