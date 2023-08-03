@@ -7,8 +7,9 @@ import { CountryData } from "../../interfaces/country";
 import MarkerPopup from "../../components/MarkerPopup";
 import { MapContainer, TileLayer } from "react-leaflet";
 
-const fetchCountryData = async () =>
-  axios.get<CountryData[]>("https://disease.sh/v3/covid-19/countries");
+const fetchCountryData = () => {
+  return axios.get<CountryData[]>("https://disease.sh/v3/covid-19/countries");
+};
 
 const CountryWise = () => {
   const { data, isLoading, isError, error } = useQuery(
@@ -36,11 +37,12 @@ const CountryWise = () => {
         style={{ height: "30rem" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {data!.data.map((countryData) => (
-          <Fragment key={countryData.country}>
-            <MarkerPopup country={countryData} />
-          </Fragment>
-        ))}
+        {data &&
+          data.data.map((countryData) => (
+            <Fragment key={countryData.country}>
+              <MarkerPopup country={countryData} />
+            </Fragment>
+          ))}
       </MapContainer>
     </div>
   );

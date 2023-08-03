@@ -12,20 +12,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import axios, { AxiosError } from "axios";
 import Loader from "../../components/Loader";
-import "../../index.css";
-
-interface HistoricalData {
-  cases: { [date: string]: number };
-  deaths: { [date: string]: number };
-  recovered: { [date: string]: number };
-}
-
-interface Data {
-  date: string;
-  cases: number;
-  deaths: number;
-  recovered: number;
-}
+import { ChartData, HistoricalData } from "../../interfaces/historicalData";
 
 const fetchHistoricalData = () =>
   axios.get<HistoricalData>(
@@ -33,7 +20,7 @@ const fetchHistoricalData = () =>
   );
 
 const Historical = () => {
-  const [dataSet, setDataSet] = useState<Data[]>();
+  const [chartDataSet, setChartDataSet] = useState<ChartData[]>();
 
   const onSuccess = (response: any) => {
     const historicalData = response!.data;
@@ -46,11 +33,11 @@ const Historical = () => {
       recovered: recovered[date],
     }));
 
-    setDataSet(data);
+    setChartDataSet(data);
   };
 
   const { isLoading, isError, error } = useQuery(
-    "countries-wise",
+    "historical",
     fetchHistoricalData,
     { onSuccess }
   );
@@ -74,7 +61,7 @@ const Historical = () => {
       <h2>COVID-19 Historical Data</h2>
       <ResponsiveContainer width="80%" height={400}>
         <LineChart
-          data={dataSet}
+          data={chartDataSet}
           margin={{ top: 20, right: 30, left: 50, bottom: 0 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 12 }} />
