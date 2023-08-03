@@ -38,7 +38,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col items-center py-8 px-10">
+    <div className="flex flex-col items-center py-28 px-10 min-h-screen">
       {!showForm && (
         <>
           <button
