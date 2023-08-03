@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { navlinks } from "../constants/navlink";
 import { FaTimes, FaBars } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [title, setTitle] = useState("");
+  const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [title, setTitle] = useState("");
   const [activeLinkId, setActiveLinkId] = useState(0);
   const [showSideNav, setShowSideNav] = useState(false);
 
@@ -16,7 +17,12 @@ const Navbar = () => {
         setActiveLinkId(id);
       }
     });
-  }, []);
+  }, [pathname]);
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setShowSideNav(false);
+  };
 
   return (
     <nav className="relative w-full">
@@ -24,6 +30,8 @@ const Navbar = () => {
         {title}
       </div>
       <div
+        onBlur={() => setShowSideNav(false)}
+        tabIndex={0}
         className={`h-screen absolute w-1/2 md:w-1/5 top-0 flex flex-col items-center duration-500 p-5 ${
           showSideNav
             ? "left-0 bg-gray-500"
@@ -46,19 +54,15 @@ const Navbar = () => {
           }`}
         >
           {navlinks.map(({ id, path, name }) => (
-            <Link
-              to={path}
+            <div
               key={id}
-              onClick={(e) => {
-                setTitle(name);
-                setActiveLinkId(id);
-              }}
+              onClick={() => handleNavigation(path)}
               className={`${
                 activeLinkId === id && "border-b"
-              } py-2 text-center`}
+              } py-2 text-center cursor-pointer`}
             >
               {name}
-            </Link>
+            </div>
           ))}
         </div>
       </div>
