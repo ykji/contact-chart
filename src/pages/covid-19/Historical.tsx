@@ -59,11 +59,10 @@ const Historical = () => {
   return (
     <div className="flex flex-col gap-5 items-center mt-10 bg-geen-400 w-full px-10 flex-1">
       <h2>COVID-19 Historical Data</h2>
-      <ResponsiveContainer width="80%" height={400}>
+      <ResponsiveContainer width="90%" height={400}>
         <LineChart
-          style={{ zIndex: -10 }}
           data={chartDataSet}
-          margin={{ top: 20, right: 30, left: 50, bottom: 0 }}
+          margin={{ top: 20, right: 0, left: 40, bottom: 0 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 12 }} />
           <YAxis

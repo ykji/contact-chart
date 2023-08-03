@@ -34,7 +34,7 @@ const CountryWise = () => {
         center={[15, 40]}
         className="w-full rounded-lg"
         scrollWheelZoom={false}
-        style={{ height: "30rem", zIndex: -10 }}
+        style={{ height: "30rem" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {data &&

@@ -11,10 +11,6 @@ const Charts = () => {
     if (activeTab) {
       setActiveTab(parseInt(activeTab));
     }
-
-    return ()=>{
-      localStorage.removeItem('activeTab')
-    }
   }, []);
 
   return (
