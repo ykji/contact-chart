@@ -25,14 +25,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative w-full">
-      <div className="h-16 border-b border-gray-600 flex justify-center items-center w-full text-xl xl:text-3xl font-semibold">
+    <nav className="w-full fixed top-0">
+      <div className="h-16 border-b border-gray-600 flex justify-center items-center w-full text-xl xl:text-3xl font-semibold bg-black">
         {title}
       </div>
       <div
         onBlur={() => setShowSideNav(false)}
         tabIndex={0}
-        className={`h-screen absolute w-1/2 md:w-1/5 top-0 flex flex-col items-center duration-500 p-5 ${
+        className={`h-screen fixed w-1/2 md:w-1/5 top-0 flex flex-col items-center duration-500 p-5 ${
           showSideNav
             ? "left-0 bg-gray-500"
             : "bg-transparent left-[-35%] md:left-[-14%] xl:left-[-16%]"

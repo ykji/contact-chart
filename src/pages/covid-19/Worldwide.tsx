@@ -35,7 +35,7 @@ const Worldwide = () => {
 
   return (
     <div className="flex flex-col gap-5 items-center my-5">
-      <h2>Worldwide COVID-19 Data</h2>
+      <h2>COVID-19 Worldwide Data</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <DataCard label="Total Cases" value={cases} />
         <DataCard label="Today's Cases" value={todayCases} />

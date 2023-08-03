@@ -15,7 +15,7 @@ const ContactForm = (props: Props) => {
 
   return (
     <form
-      className="flex flex-col mt-8 gap-4 items-end"
+      className="flex flex-col gap-4 items-end"
       onSubmit={handleSubmit}
     >
       <p className="self-center text-center font-bold">{title}</p>

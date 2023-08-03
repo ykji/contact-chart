@@ -38,7 +38,7 @@ const ContactDetails = () => {
   const { name, status, gender, mobile, designation, age, email } = contact;
 
   return (
-    <div className="flex flex-col px-5 md:mx-24 py-10 items-center gap-10 md:gap-16">
+    <div className="flex flex-col px-5 md:mx-24 pt-28 min-h-screen items-center gap-10 md:gap-16">
       {!showEditForm && (
         <>
           <h1 className="text-2xl">Details</h1>
