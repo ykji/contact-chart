@@ -39,7 +39,7 @@ const Navbar = () => {
         }`}
       >
         <div
-          className="self-end text-black cursor-pointer"
+          className="self-end text-black cursor-pointer z-20"
           onClick={() => setShowSideNav(!showSideNav)}
         >
           {showSideNav ? (

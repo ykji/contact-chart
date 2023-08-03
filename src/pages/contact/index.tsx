@@ -30,7 +30,6 @@ const Contact = () => {
     setShowForm(false);
     dispatch(addContact({ ...formData, id: new Date().getTime() }));
     setFormData(CONTACT_DETAILS_INITIAL_STATE);
-    console.log(formData);
   };
 
   const handleDelete = (id: number) => {

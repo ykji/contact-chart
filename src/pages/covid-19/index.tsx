@@ -1,9 +1,21 @@
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { covidDataLinks } from "../../constants/covidDataLink";
 
 const Charts = () => {
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const activeTab = localStorage.getItem("activeTab");
+
+    if (activeTab) {
+      setActiveTab(parseInt(activeTab));
+    }
+
+    return ()=>{
+      localStorage.removeItem('activeTab')
+    }
+  }, []);
 
   return (
     <div className="flex flex-col items-center gap-5 pt-20 px-6 md:px-20 min-h-screen">
@@ -16,7 +28,10 @@ const Charts = () => {
               className={`py-2 px-3 font-bold text-sm ${
                 activeTab === index ? "bg-white text-black" : "bg-transparent"
               }`}
-              onClick={() => setActiveTab(index)}
+              onClick={() => {
+                localStorage.setItem("activeTab", index.toString());
+                setActiveTab(index);
+              }}
             >
               {name}
             </Link>

@@ -61,6 +61,7 @@ const Historical = () => {
       <h2>COVID-19 Historical Data</h2>
       <ResponsiveContainer width="80%" height={400}>
         <LineChart
+          style={{ zIndex: -10 }}
           data={chartDataSet}
           margin={{ top: 20, right: 30, left: 50, bottom: 0 }}
         >

@@ -32,7 +32,6 @@ const ContactDetails = () => {
     e.preventDefault();
     setShowEditForm(false);
     dispatch(updateContact(parseInt(id!), contact));
-    console.log(contact);
   };
 
   const { name, status, gender, mobile, designation, age, email } = contact;
