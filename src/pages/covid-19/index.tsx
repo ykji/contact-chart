@@ -6,7 +6,7 @@ const Charts = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="flex flex-col items-center gap-5 my-6 px-6 md:px-20">
+    <div className="flex flex-col items-center gap-5 my-6 px-6 md:px-20 h-full">
       <h1 className="text-xl font-bold">COVID-19 Data</h1>
       <div className="flex border border-gray-500 rounded-md">
         {covidDataLinks.map(({ id, path, name }, index) => (
