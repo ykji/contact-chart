@@ -1,15 +1,20 @@
 import { useState, Fragment, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { covidDataLinks } from "../../constants/covidDataLink";
 
 const Charts = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const activeTab = localStorage.getItem("activeTab");
-
-    if (activeTab) {
-      setActiveTab(parseInt(activeTab));
+    if (pathname === "/charts") {
+      setActiveTab(0);
+    } else {
+      covidDataLinks.forEach(({ path, id }) => {
+        if (pathname.includes(path)) {
+          setActiveTab(id);
+        }
+      });
     }
   }, []);
 
@@ -24,10 +29,7 @@ const Charts = () => {
               className={`py-2 px-3 font-bold text-sm ${
                 activeTab === index ? "bg-white text-black" : "bg-transparent"
               }`}
-              onClick={() => {
-                localStorage.setItem("activeTab", index.toString());
-                setActiveTab(index);
-              }}
+              onClick={() => setActiveTab(index)}
             >
               {name}
             </Link>
