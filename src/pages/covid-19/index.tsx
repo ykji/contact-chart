@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { covidDataLinks } from "../constants/covidDataLink";
+import { covidDataLinks } from "../../constants/covidDataLink";
 
 const Charts = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -14,7 +14,7 @@ const Charts = () => {
             <Link
               key={id}
               to={path}
-              className={`py-3 px-6 font-bold ${
+              className={`py-2 px-3 font-bold text-sm ${
                 activeTab === index ? "bg-white text-black" : "bg-transparent"
               }`}
               onClick={() => setActiveTab(index)}

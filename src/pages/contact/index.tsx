@@ -1,13 +1,13 @@
-import { RootState } from "../redux/store";
-import ContactForm from "../components/ContactForm";
-import ContactCard from "../components/ContactCard";
+import { RootState } from "../../redux/store";
+import ContactForm from "../../components/ContactForm";
+import ContactCard from "../../components/ContactCard";
 import { useDispatch, useSelector } from "react-redux";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { addContact, deleteContact } from "../redux/actions/contactActions";
+import { addContact, deleteContact } from "../../redux/actions/contactActions";
 import {
   CONTACT_DETAILS_INITIAL_STATE,
   ContactDetails,
-} from "../interfaces/contact";
+} from "../../interfaces/contact";
 
 const Contact = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
-import { RootState } from "../redux/store";
 import { useParams } from "react-router-dom";
-import ContactForm from "../components/ContactForm";
+import { RootState } from "../../redux/store";
+import ContactForm from "../../components/ContactForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, ChangeEvent, FormEvent } from "react";
-import userPlaceholder from "../assets/user-placeholder.webp";
-import { updateContact } from "../redux/actions/contactActions";
+import userPlaceholder from "../../assets/user-placeholder.webp";
+import { updateContact } from "../../redux/actions/contactActions";
 
 const ContactDetails = () => {
   const { id } = useParams();
